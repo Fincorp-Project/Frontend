@@ -1,19 +1,19 @@
 import './App.css';
-import Signup from './components/Signup';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import Verification from './pages/Verification';
 import CreatePassword from './pages/CreatePassword';
 import RegistrationComplete from './pages/RegistrationComplete';
 
 function App() {
   return (
-   <>
-    {/* <Signup></Signup> */}
-    <div className='App'>
+    <div className="App">
+      <Login />
+      <Signup />
       <Verification />
-      {/* <CreatePassword /> */}
-      {/* <RegistrationComplete /> */}
+      <CreatePassword />
+      <RegistrationComplete />
     </div>
-    </>
   );
 }
 
