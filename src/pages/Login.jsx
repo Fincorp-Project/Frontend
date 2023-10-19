@@ -1,8 +1,10 @@
 import React from "react";
 import "../styles/Verification.css";
 import "../styles/CreatePassword.css";
+import { useNavigate } from "react-router-dom";
 import login from "../assets/login.png";
 function Login() {
+  const navigate = useNavigate();
   return (
     <div className="verification-page">
       <div className="verification-image">
@@ -11,33 +13,33 @@ function Login() {
       <div className="verification-form">
         <h2 className="fintech-heading">Fintech Corp</h2>
         <hr className="line" />
-        <h4>Login Up</h4>
+        <h4>Login </h4>
         <p>Welcome back, Please enter your details</p>
         <form>
           <div className="form-group">
             <input
-              className="verification-input icon-input"
+              className="verification-input icon-input "
               type="text"
               id="verification-code"
               name="verification-code"
               placeholder="Username"
             />
-            <p>Forget username?</p>
+            <p className="forgot-para">Forget username?</p>
           </div>
           <div className="form-group">
             <input
-              className="verification-input icon-input"
+              className="verification-input icon-input "
               type="text"
               id="verification-code"
               name="verification-code"
               placeholder="Password"
             />
-            <p>Forget password?</p>
+            <p className="forgot-para">Forget password?</p>
           </div>
-          <button type="submit" className="submit-button">
+          <button type="submit" className="submit-button login-button" onClick={()=> navigate('/signup')}>
             SUBMIT
           </button>
-          <div>
+          <div className="Login-with-gmail-and-outlook">
             <button>Login with Gmail</button>
             <button>Login with Outlook</button>
           </div>
