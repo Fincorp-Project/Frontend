@@ -4,7 +4,7 @@ import { useNavigate} from 'react-router-dom';
 
 import verificationImg from '../assets/verification.png';
 function Verification(){
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     return (
         <div className="verification-page">
             <div className="verification-image">
@@ -20,7 +20,7 @@ enter it below</p>
                 <div className="form-group">
             <input className="verification-input icon-input"type="text" id="verification-code" name="verification-code" placeholder="Please Enter verification code"/>
           </div> 
-          <button type="submit" className="submit-button">SUBMIT</button>
+          <button type="submit" className="submit-button" onClick={()=>navigate('/create/pass')}>SUBMIT</button>
           <p className="powered-text">Powered by Fintech Corp</p>
                 </form>
             </div>

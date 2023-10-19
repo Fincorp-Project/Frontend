@@ -1,0 +1,14 @@
+.email-send-para{
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-left: 180px;
+    margin-top: 60px;
+}
+.why-this-text{
+    color: #63A9D7;
+}
+a{
+    color: #63A9D7;
+    text-decoration: none;
+}
