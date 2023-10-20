@@ -3,8 +3,45 @@ import '../styles/Verification.css';
 import '../styles/CreatePassword.css';
 import signup from '../assets/signup.png';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useState } from 'react';
+import API_URL from '../utils/apiconfig';
+
 function Signup(){
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Create the data object to send to the API
+    const data = {
+      "email": email,
+      "phonenumber": phonenumber,
+    };
+    console.log(data);
+
+    try {
+      const response = await axios.post(`${API_URL}/api/auth/register`, data,{
+        headers: {
+          'Content-Type': 'application/json', // Set the content type to JSON
+        },
+      });
+      console.log(response);
+
+      if (response.status === 201) {
+        
+        console.log(response.data.user.id)
+        alert('Signup successful!');
+        navigate('/email/send');
+      } else {
+        alert('Signup failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error signing up:', error);
+      alert('An error occurred while signing up. Please try again later.');
+    }
+  };
     return (
       <div className="verification-page">
         <div className="verification-image">
@@ -15,26 +52,30 @@ function Signup(){
           <hr className="line" />
           <h4>Sign Up</h4>
           <p>Please enter the details give below</p>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
               <input
                 className="verification-input icon-input padding-input"
                 type="text"
-                id="verification-code"
-                name="verification-code"
+                id="email"
+                name="email"
+                value={email}
                 placeholder="Please enter your email ID"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="form-group">
               <input
                 className="verification-input icon-input padding-input"
                 type="text"
-                id="verification-code"
-                name="verification-code"
+                id="Phonenumber"
+                name="Phonenumber"
+                value={phonenumber}
                 placeholder="Please enter your mobile number"
+                onChange={(e) => setPhonenumber(e.target.value)}
               />
             </div>
-            <button type="submit" className="submit-button" onClick={()=>navigate('/email/send')}>
+            <button type="submit" className="submit-button">
               SUBMIT
             </button>
             <p className="powered-text">Powered by Fintech Corp</p>
