@@ -1,0 +1,82 @@
+.topbar{
+    border: 0.81px solid #28A8EA;
+box-shadow: 0px 3.23843px 3.23843px 0px rgba(255, 211, 163, 0.25);
+display: flex;
+justify-content: space-between;
+padding: 8px;
+z-index: 999;
+}
+.fintech-heading{
+    font-family: 'Lexend';
+font-size: 22px;
+
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+background: linear-gradient(95deg, #71C9CE 21.79%, #EA4335 106%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+padding: 0;
+margin: 0;
+margin-left: 20px;
+}
+.search-box{
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+.search-box input{
+    border-radius: 15px;
+    width: 50%;
+height: 18px;
+border: 0.3px solid #A1A1A1;
+background: #FFF;
+display: inline-flex;
+padding: 5px 20px 4px 20px;
+justify-content: center;
+align-items: center;
+gap: 400px;
+color: #A1A1A1;
+font-family: 'Open Sans';
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 1.26px;
+}
+.notification-img{
+    width: 25px;
+    height: 25px;
+    margin-right: 50px;
+}
+.profile-img{
+    border-radius: 50px;
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    background: linear-gradient(143deg, #0078D4 4.96%, #EA4335 83.11%);
+}
+.additional-items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.username{
+    color: #252525;
+font-family: 'Open Sans';
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 1.26px;
+margin-right: 50px;
+margin-left: 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+}

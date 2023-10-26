@@ -14,7 +14,6 @@ function Signup(){
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Create the data object to send to the API
     const data = {
       "email": email,
       "phonenumber": phonenumber,

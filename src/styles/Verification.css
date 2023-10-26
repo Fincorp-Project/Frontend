@@ -18,7 +18,7 @@
 }
 .verification-form{
     flex: 1;
-    height: 70%;
+    height: 80%;
   padding: 10px;
   align-items: center;
   justify-content: center;
@@ -167,4 +167,14 @@ font-weight: 400;
 line-height: normal;
 margin-bottom: 10px;
 height: 30px;
+}
+.bold-text{
+    color: #222;
+font-family: 'Open Sans';
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+cursor: pointer;
+letter-spacing: 0;
 }

@@ -36,13 +36,14 @@ function Login() {
             />
             <p className="forgot-para">Forget password?</p>
           </div>
-          <button type="submit" className="submit-button login-button" onClick={()=> navigate('/signup')}>
+          <button type="submit" className="submit-button login-button" onClick={()=> navigate('/users')}>
             SUBMIT
           </button>
           <div className="Login-with-gmail-and-outlook">
             <button>Login with Gmail</button>
             <button>Login with Outlook</button>
           </div>
+          <p>Don't have an account <span className="bold-text" onClick={()=>navigate('/signup')}>Create a now</span></p>
           <p className="powered-text">Powered by Fintech Corp</p>
         </form>
       </div>

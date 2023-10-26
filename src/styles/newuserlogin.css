@@ -1,0 +1,30 @@
+.new-user-login{
+    background-color: fff;
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
+}
+.new-user-form{
+    height: 50%;
+}
+.new-user-form input{
+    border-radius: 20px;
+border: 1px solid #63A9D7;
+background: #FFF;
+box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.10);
+}
+.new-user-form input::placeholder{
+    color: #63A9D7;
+}
+.new-user-image{
+    height: 70%;
+    width: 70%;
+    
+}
+.new-user-image-container{
+    justify-content: end;
+    margin-right: 200px;
+}
+.verification-user-form{
+    height: 50%;
+}
