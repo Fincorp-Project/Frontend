@@ -6,16 +6,28 @@ import edit from '../assets/edit.png'
 import resend from '../assets/resend.png'
 function Users() {
     const navigate = useNavigate();
-    const [openDivId, setOpenDivId] = useState(null);
     const users = [
-        // Replace this with your actual user data
-        {id:1,  name: 'User 1', email: 'user1@example.com', status: 'active' },
-        {id:2,  name: 'User 2', email: 'user2@example.com', status: 'inactive' },
-        {id:1,  name: 'User 1', email: 'user1@example.com', status: 'active' },
-        {id:2,  name: 'User 2', email: 'user2@example.com', status: 'inactive' },
-        {id:1,  name: 'User 1', email: 'user1@example.com', status: 'active' },
-        // Add more user data as needed
-      ];
+      // Replace this with your actual user data
+      {id:1,  name: 'User 1', email: 'user1@example.com', status: 'active' },
+      {id:2,  name: 'User 2', email: 'user2@example.com', status: 'inactive' },
+      {id:1,  name: 'User 1', email: 'user1@example.com', status: 'active' },
+      {id:2,  name: 'User 2', email: 'user2@example.com', status: 'inactive' },
+      {id:1,  name: 'User 1', email: 'user1@example.com', status: 'active' },
+      // Add more user data as needed
+    ];
+    const [openDivId, setOpenDivId] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10); // You can set the default items per page
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = users.slice(indexOfFirstItem, indexOfLastItem);
+  const pagesToDisplay = 4;
+  const totalPages = Math.ceil(users.length / itemsPerPage) || 1;
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+   
       const toggleDiv = (userId) => {
         if (openDivId === userId) {
           setOpenDivId(null);
@@ -68,7 +80,65 @@ function Users() {
       </div>
      
     </div>
-    
+    <div className="pagination">
+  <div className="items-per-page">
+    <label>Show Items per Page:</label>
+    <select
+      onChange={(e) => setItemsPerPage(parseInt(e.target.value))}
+      value={itemsPerPage}
+    >
+      <option value={10}>10</option>
+      <option value={20}>20</option>
+      <option value={50}>50</option>
+    </select>
+  </div>
+  <div className="pagination-controls">
+    <ul className="pagination-list">
+    <li>
+      <button
+        onClick={() => handlePageChange(currentPage - 1 )}
+        disabled={currentPage === 1}
+      >
+        Previous
+      </button>
+    </li>
+
+      {Array(pagesToDisplay)
+        .fill()
+        .map((_, index) => {
+          const page = currentPage + index - Math.floor(pagesToDisplay / 2);
+
+    if (page>=1&& page <= totalPages){
+          return (
+          <li key={page}>
+            <button
+              onClick={() => handlePageChange(page)}
+              className={currentPage === page ? "" : currentPage === 1 && page === 1 ? "" : ""}
+>
+              {page}
+            </button>
+          </li>
+          );
+    }
+    return null;
+})}
+<li>
+        <button
+ onClick={() => handlePageChange(currentPage + 1)}
+ disabled={currentPage === totalPages}
+          // onClick={() => handlePageChange(
+          //   Math.min(
+          //     currentPage + pagesToDisplay,
+          //     Math.ceil(data.length / itemsPerPage)
+          //   )
+          // )}
+        >
+          Next
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
     </div>
     
   )

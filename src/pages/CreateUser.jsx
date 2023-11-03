@@ -1,9 +1,17 @@
 import React from 'react'
 import '../styles/userlist.css'
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
+import API_URL from '../utils/apiconfig';
 function CreateUser() {
     const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
+  const notifySuccess = (message) => toast.success(message);
+  const notifyError = (message) => toast.error(message);
   return (
     <div className='App'>
        <div className='users-heading'>

@@ -14,12 +14,14 @@ import CreateUser from './pages/CreateUser';
 import NewUserLogin from './pages/NewUserLogin';
 import NewUserVerification from './pages/NewUserVerification';
 import CreateNewUserPassword from './pages/CreateNewUserPassword';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <BrowserRouter>
-   
+    <ToastContainer autoClose={1000} />
     <Routes>
+     
       <Route path="/" element={<Login />}/>
       <Route path="/signup" element={<Signup />}/>
       <Route path="/new-user-login" element={<NewUserLogin />}/>
@@ -28,8 +30,8 @@ function App() {
 
       <Route path="/mainpage" element={<MainPage />}/>
       <Route path="/email/send" element={<EmailSent />}/>
-      <Route path="/verify" element={<Verification />}/>
-      <Route path="/create/pass" element={<CreatePassword />}/>
+      <Route path="/verify-email/:token" element={<Verification />}/>
+      <Route path="/create-pass/:token" element={<CreatePassword />}/>
       <Route path="/registration/complete" element={<RegistrationComplete />}/>
 
 

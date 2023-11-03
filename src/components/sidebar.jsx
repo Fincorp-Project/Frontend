@@ -1,11 +1,16 @@
 import React ,{useState}from 'react'
 import '../styles/sidebar.css';
-import users from '../assets/users.png';
-import dashboard from '../assets/dashboard.png';
+import users from '../assets/users-black.png';
+import dashboard from '../assets/dashboard-black.png';
+import userwhite from '../assets/users-white.png';
+import dashboardwhite from '../assets/dashboard-white.png'
 import bars from '../assets/bars.png';
-import { NavLink } from 'react-router-dom';
+import logout from '../assets/logout.png';
+import back from '../assets/back.png';
+import { NavLink,useLocation } from 'react-router-dom';
 
 function Sidebar({children}) {
+    const location = useLocation();
     const[isOpen ,setIsOpen] = useState(false);
     const togglelogo = () => setIsOpen (!isOpen);
     const toggleScroll = (isOpen) => {
@@ -22,23 +27,32 @@ function Sidebar({children}) {
         {
             path:"/dashboard",
             name: "Dashboard",
-            icon : <img src={dashboard} alt="dashboard"/>
-
+            icon: (
+                <img src={location.pathname === '/dashboard' ? dashboardwhite : dashboard} alt="dashboard" />
+              ),
         },
         {
             path:"/users",
             name: "Users",
-            icon : <img src={users} alt='users'/>
-
+            icon: (
+                <img src={location.pathname === '/users' ? userwhite : users} alt="users" />
+              ),
         },
        
     ]
   return (
     <div className='container'>
 <div style={{width: isOpen ? "200px" : "50px"}} className="sidebar">
-               <div className='toggle-button icon' onClick={toggle}>
+    {isOpen ? (
+        <div className="toggle-button icon right" onClick={toggle}>
+        <img src={back} alt="back" />
+      </div>
+    ):(
+        <div className='toggle-button icon' onClick={toggle}>
                 <img src={bars} />
                 </div>
+    )}
+               
                {menuItem.map((item, index) => (
                         
                             <NavLink to={item.path} key={index} className={isOpen ? "link" : "link-hidden"} activeclassName="active">
@@ -49,6 +63,10 @@ function Sidebar({children}) {
                             </NavLink>
                         
                     ))}
+                     <div className={isOpen ? "link  bottom-logout" : "link-hidden  bottom-logout-close"} >
+                            <div className="icon " title='Log Out'><img src={logout} className='icon-img' /></div>
+                            <div style={{ display: isOpen ? "block" : "none" }} className="link_text">Log Out</div>
+                        </div>
                     
            </div>
            <main  >{children}</main>

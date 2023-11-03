@@ -4,6 +4,8 @@ import '../styles/CreatePassword.css';
 import signup from '../assets/signup.png';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import API_URL from '../utils/apiconfig';
 
@@ -11,9 +13,19 @@ function Signup(){
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [phonenumber, setPhonenumber] = useState("");
+  const notifySuccess = (message) => toast.success(message);
+  const notifyError = (message) => toast.error(message);
+
+  const isEmailValid = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailRegex.test(email);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (!isEmailValid(email)) {
+      notifyError("Invalid email address.");
+      return;
+    }
     const data = {
       "email": email,
       "phonenumber": phonenumber,
@@ -29,16 +41,22 @@ function Signup(){
       console.log(response);
 
       if (response.status === 201) {
-        
         console.log(response.data.user.id)
-        alert('Signup successful!');
+        notifySuccess('Successful!');
         navigate('/email/send');
       } else {
-        alert('Signup failed. Please try again.');
+        const message = response.data.message;
+        notifyError(message);
       }
     } catch (error) {
       console.error('Error signing up:', error);
-      alert('An error occurred while signing up. Please try again later.');
+      if(error.response && error.response.status === 400){
+        const message = error.response.data.phonenumber[0];
+        notifyError(message);
+
+      }else{
+        notifyError("An error occurred. Please contact Admin.")
+      }
     }
   };
     return (
