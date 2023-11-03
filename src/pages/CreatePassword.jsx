@@ -11,10 +11,16 @@ function CreatePassword(){
     const navigate = useNavigate();
     const {token} = useParams();
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState(""); // Add a state for confirmPassword
+
     const notifySuccess = (message) => toast.success(message);
   const notifyError = (message) => toast.error(message);
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (password !== confirmPassword) {
+            notifyError("Passwords don't match");
+            return;
+        }
 
         const requestBody = {
             verification_token: token,
@@ -64,7 +70,7 @@ function CreatePassword(){
             <input className="verification-input icon-input padding-input"type="password" id="password" name="password" placeholder="Please Enter your new password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
           </div> 
           <div className="form-group">
-            <input className="verification-input icon-input padding-input"type="password" id="confirm-password" name="confirm-password" placeholder="Please Re - Enter your new password" required/>
+            <input className="verification-input icon-input padding-input"type="password" id="confirm-password" name="confirm-password" placeholder="Please Re - Enter your new password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required/>
           </div> 
           <button type="submit" className="submit-button" >SUBMIT</button>
           <p className="powered-text">Powered by Fintech Corp</p>
