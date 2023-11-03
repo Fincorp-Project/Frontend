@@ -53,6 +53,10 @@ padding: 5px;
   
   }
 
+  .toggle-button{
+    cursor: pointer;
+  }
+
   .active{
     
     border-radius: 10px;
