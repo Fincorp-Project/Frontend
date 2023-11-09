@@ -19,7 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <BrowserRouter>
-    <ToastContainer autoClose={1000} />
+    <ToastContainer autoClose={2500} />
     <Routes>
      
       <Route path="/" element={<Login />}/>
