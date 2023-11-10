@@ -28,7 +28,7 @@ function Signup() {
       return;
     }
     if (email == "") {
-      notifyError("Please enter Email");
+      notifyError("Please enter email");
       return;
     }
     if (!isEmailValid(email)) {
@@ -36,11 +36,11 @@ function Signup() {
       return;
     }
     if (phonenumber == "") {
-      notifyError("Please Enter Phone Number");
+      notifyError("Please enter phone number");
       return;
     }
     if(phonenumber.length >=15 || phonenumber.length<=13){
-      notifyError("Number should be 10 digits long")
+      notifyError("Phone number should be 10 digit")
     }
     const data = {
       email: email,
@@ -58,7 +58,7 @@ function Signup() {
 
       if (response.status === 201) {
         console.log(response.data.user.id);
-        notifySuccess("Successful!");
+        notifySuccess("Email  sent successfully");
         navigate("/email/send");
       } else {
         const message = response.data.message;
@@ -66,12 +66,13 @@ function Signup() {
       }
     } catch (error) {
       console.error("Error signing up:", error);
-      // if (error.response && error.response.status === 400) {
-      //   const message = error.response.data.phonenumber[0];
-      //   notifyError(message);
-      // } else {
-      //   notifyError("An error occurred. Please contact Admin.");
-      // }
+
+      if (error.response && error.response.status === 400) {
+        const message = error.response.data.phonenumber[0];
+        notifyError(message);
+      } else {
+        notifyError("An error occurred. Please contact Admin.");
+      }
     }
   };
   const formatPhoneNumber = (input) => {
