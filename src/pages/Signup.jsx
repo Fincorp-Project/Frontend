@@ -23,7 +23,10 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     phonenumber.toString();
-    console.log(phonenumber)
+    if (email == "" && phonenumber == "") {
+      notifyError("All fields are mandatory");
+      return;
+    }
     if (email == "") {
       notifyError("Please enter Email");
       return;
@@ -33,7 +36,7 @@ function Signup() {
       return;
     }
     if (phonenumber == "") {
-      notifyError("Please Enter Phone no");
+      notifyError("Please Enter Phone Number");
       return;
     }
     if(phonenumber.length >=15 || phonenumber.length<=13){

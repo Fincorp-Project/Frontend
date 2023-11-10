@@ -101,7 +101,7 @@ function Login() {
             <button><img src={gmail} className="gmail"/>Login with Gmail</button>
             <button><img src={outlook} className="gmail"/>Login with Outlook</button>
           </div>
-          <p>Don't have an account <span className="bold-text" onClick={()=>navigate('/signup')}>Create a now</span></p>
+          <p>Don't have an account <span className="bold-text" style={{textDecoration:"underline"}} onClick={()=>navigate('/signup')}>Create Now</span></p>
           <p className="powered-text">Powered by Fintech Corp</p>
         </form>
       </div>
